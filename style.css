@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+    background: #ffe1bb;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 15px;
+}
+
+.card {
+    position: relative;
+    width: 320px;
+    height: 450px;
+    max-width: calc(100vw - 40px);
+    background: #fffaf0;
+    color: #013243;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
+    transition: transform .7s ease;
+}
+
+.card .imgBox {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: transform .9s ease;
+    background: white;
+    cursor: pointer;
+}
+
+.card .imgBox img {
+    width: 100%;
+    height: calc(100% - 80px);
+    display: block;
+    object-fit: contain;
+    aspect-ratio: 3 / 4;
+    background: white;
+}
+
+.card .bark {
+    position: absolute;
+    inset: 0;
+    background: #e0e1dc;
+    opacity: 0;
+    transition: opacity .6s;
+    pointer-events: none;
+}
+
+.coverText {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 90px;
+    padding: 8px;
+    text-align: center;
+    background: #c9f1ff;
+    color: #185000;
+}
+
+.coverText h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 29px;
+    margin: 0;
+    color: #185000;
+}
+
+.coverText p {
+    font-size: 17px;
+    margin: 0;
+}
+
+.card .details {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background: #bbeaff;
+    background-image: radial-gradient(
+        #f4f1cb 1px,
+        transparent 1px
+    );
+    background-size: 18px 18px;
+    scrollbar-width: thin;
+}
+
+.card .details h4 {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    line-height: 1.1;
+    margin: 4px 0 8px;
+}
+
+.color1 {
+    color: #648957;
+}
+
+.color2 {
+    color: #C03952;
+}
+
+.card .details p {
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 9px 0;
+    padding: 0 5px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.signature {
+    color: #c03962;
+    font-size: 17px !important;
+    font-weight: bold;
+}
+
+/* OPEN THE CARD */
+.card.open .imgBox {
+    transform: rotateY(-135deg);
+}
+
+.card.open .bark {
+    opacity: .12;
+}
+
+/* DESKTOP HOVER */
+@media (hover: hover) {
+    .card:hover .imgBox {
+        transform: rotateY(-135deg);
+    }
+
+    .card:hover .bark {
+        opacity: .12;
+    }
+}
+
+.hint {
+    color: #700d0d;
+    font-size: 16px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+@media (max-width: 400px) {
+    .card {
+        width: 285px;
+        height: 430px;
+    }
+
+    .card .details {
+        padding: 12px;
+    }
+
+    .card .details p {
+        font-size: 12px;
+        line-height: 1.35;
+        margin: 7px 0;
+    }
+
+    .card .details h4 {
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .card .imgBox,
+    .card .bark {
+        transition-duration: .01ms;
+    }
+    .couple-photo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    margin: 12px auto;
+}
+}
